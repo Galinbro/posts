@@ -3,31 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8180c5ed-673f-49f8-86b4-67ec3aa8cc38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminPostsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminPostsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_13_173818_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_13_173818_create_posts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573631519adult-alone-blur-close-up-1172207.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573656815photo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573659448photo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573659571photo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573660306photo3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573660789photo2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573660879photo3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573660907photo2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573662236photo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573663168photo3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573663242photo2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573664165test.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573664751test.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573664813test.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573670978photo3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1573671458test.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/place_hold_user.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminCategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminCategoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/posts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/posts/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/posts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/posts/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -207,7 +185,7 @@
       <workItem from="1573598896828" duration="17130000" />
       <workItem from="1573656738068" duration="16910000" />
       <workItem from="1573675664570" duration="5021000" />
-      <workItem from="1573742310439" duration="3263000" />
+      <workItem from="1573742310439" duration="4149000" />
     </task>
     <servers />
   </component>
