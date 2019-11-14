@@ -2,10 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8180c5ed-673f-49f8-86b4-67ec3aa8cc38" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/bbva.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bbva.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminCategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminCategoriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminPostsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminPostsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/1573669965photo2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/1573670028test.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/1573670295photo3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/1573670356photo2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/1573670407test.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/1573670765test.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/1573670882photo3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/1573683425test.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/1573683552men2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/1573683822placeholder.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/1573683861test.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/1573683884test.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/1573743650men1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/1573743750placeholder2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/1573745211placeholder2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,6 +148,8 @@
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/vendor/cviebrock/eloquent-sluggable" />
+      <path value="$PROJECT_DIR$/vendor/cocur/slugify" />
     </include_path>
   </component>
   <component name="ProjectId" id="1TWZhyl656p52VA65PkqtV7WmtC" />
@@ -145,12 +170,12 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\bbva\resources\views\admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\bbva\resources\sass" />
       <recent name="C:\xampp\htdocs\bbva\public\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\bbva\resources\views\admin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -185,7 +210,7 @@
       <workItem from="1573598896828" duration="17130000" />
       <workItem from="1573656738068" duration="16910000" />
       <workItem from="1573675664570" duration="5021000" />
-      <workItem from="1573742310439" duration="4149000" />
+      <workItem from="1573742310439" duration="11514000" />
     </task>
     <servers />
   </component>
