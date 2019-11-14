@@ -8,6 +8,7 @@ use App\Photo;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 
@@ -140,7 +141,7 @@ class AdminUsersController extends Controller
 
         $user->update($input);
 
-        Session::flash('edit_user', 'El usuario fue editado');
+        Session::flash('update_user', 'El usuario fue actualizado');
 
         return redirect('admin/users');
 
@@ -157,15 +158,18 @@ class AdminUsersController extends Controller
         //
         $user = user::findOrFail($id);
 
-        /*if ($user->photo_id){
+        if ($user->photo_id){
 
-            unlink(public_path() . $user->photo->file);
+            $image_path = $user->photo->file;
+
+            $parse = explode("/", $image_path);
+
+            unlink('images/' . end($parse));
 
             $photo = Photo::findOrFail($user->photo_id);
 
             $photo->delete();
-        }*/
-
+        }
 
         $user->delete();
 
