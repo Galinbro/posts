@@ -18,6 +18,14 @@
             <i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }} <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
+            @if (Route::has('login'))
+                @if (Auth::user()->isAdmin())
+                    @auth
+                        <li><a href="{{ url('/admin') }}"><i class="fa fa-dashboard fa-fw"></i> Admin Page</a></li>
+                    @endauth
+                @endif
+            @endif
+
             <li>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();

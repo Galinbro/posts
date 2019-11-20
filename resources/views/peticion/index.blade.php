@@ -1,6 +1,9 @@
 
 @extends('layouts.peticion')
 
+
+
+
 @section('content')
 
     @if(Session::has('create_peticion'))

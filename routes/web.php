@@ -23,8 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/post/{id}', ['as'=>'home.post','uses'=>'AdminPostsController@post']);
 
-//Route::get('/peticion', ['as'=>'home.peticion','uses'=>'PeticionController@index']);
-
 Route::resource('/peticion','PeticionController');
 
 Route::group(['middleware'=>'admin'], function (){
@@ -38,5 +36,7 @@ Route::group(['middleware'=>'admin'], function (){
     Route::resource('admin/categories','AdminCategoriesController');
 
     Route::resource('admin/media','AdminMediaController');
+
+    Route::resource('admin/peticiones','AdminPeticionController');
 
 });
