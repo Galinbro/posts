@@ -17,6 +17,7 @@
                 </div>
             {!! Form::close() !!}
 
+            @include('includes.form_errors')
         </div>
         <div class="col-sm-6">
             @if($categories)
@@ -41,6 +42,11 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-5">
+                        {{$categories->links()}}
+                    </div>
+                </div>
             @endif
         </div>
     </div>

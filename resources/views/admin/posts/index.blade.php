@@ -27,10 +27,10 @@
            <tr>
                <th>Id</th>
                <th>Foto</th>
+               <th>Titulo</th>
                <th>Usuario</th>
                <th>Categoria</th>
-               <th>Titulo</th>
-               <th>Cuerpo</th>
+               <th>link</th>
                <th>Creado</th>
                <th>Actualizado</th>
            </tr>
@@ -41,10 +41,10 @@
                    <tr>
                        <td>{{$post->id}}</td>
                        <td><img height="50" src="{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400' }}" alt=""></td>
-                       <td><a href="{{route('posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
+                       <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
+                       <td>{{$post->user->name}}</td>
                        <td>{{$post->category ? $post->category->name : 'Sin categoria'}}</td>
-                       <td>{{$post->title}}</td>
-                       <td>{{Str::limit($post->body,25)}}</td>
+                       <td>{{Str::limit($post->archivo->file,40)}}</td>
                        <td>{{$post->created_at->diffForhumans()}}</td>
                        <td>{{$post->updated_at->diffForhumans()}}</td>
                    </tr>
@@ -52,5 +52,11 @@
             @endif
        </tbody>
    </table>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+            {{$posts->links()}}
+        </div>
+    </div>
 
 @endsection

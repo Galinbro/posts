@@ -22,7 +22,7 @@ class AdminUsersController extends Controller
     public function index()
     {
         //
-        $users = User::all();
+        $users = User::paginate(25);
 
         return view('admin.users.index', compact('users'));
     }
@@ -56,18 +56,6 @@ class AdminUsersController extends Controller
         }else{
             $input = $request->all();
             $input['password'] = bcrypt($request->password);
-        }
-
-
-        if($file = $request->file('photo_id')){
-           $name = time() . $file->getClientOriginalName();
-
-            $file->move('images', $name);
-
-            $photo = Photo::create(['file'=>$name]);
-
-            $input['photo_id'] = $photo->id;
-
         }
 
         User::create($input);
@@ -128,17 +116,6 @@ class AdminUsersController extends Controller
         }
 
 
-
-        if ($file = $request->file('photo_id')){
-            $name = time() . $file->getClientOriginalName();
-
-            $file->move('images', $name);
-
-            $photo = Photo::create(['file'=>$name]);
-
-            $input['photo_id'] = $photo->id;
-        }
-
         $user->update($input);
 
         Session::flash('update_user', 'El usuario fue actualizado');
@@ -158,18 +135,6 @@ class AdminUsersController extends Controller
         //
         $user = user::findOrFail($id);
 
-        if ($user->photo_id){
-
-            $image_path = $user->photo->file;
-
-            $parse = explode("/", $image_path);
-
-            unlink('images/' . end($parse));
-
-            $photo = Photo::findOrFail($user->photo_id);
-
-            $photo->delete();
-        }
 
         $user->delete();
 

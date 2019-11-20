@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-sm-3">
-            <img src="{{$post->photo->file}}" class="img-responsive" alt="">
+            <img src="{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400'}}" class="img-responsive img-rounded" alt="">
         </div>
         <div class="col-sm-9">
             {!! Form::model($post, ['method' =>'PATCH','action'=>['AdminPostsController@update', $post->id], 'files'=>true]) !!}
@@ -27,8 +27,8 @@
             </div>
 
             <div class="form-group">
-                {!! Form::label('body', 'Descripcion:') !!}
-                {!! Form::textarea('body', null, ['class'=>'form-control', 'row'=> 2]) !!}
+                {!! Form::label('archivo_id', 'Descripcion:') !!}
+                {!! Form::text('archivo_id', null, ['class'=>'form-control']) !!}
             </div>
 
 

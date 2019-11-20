@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (){
     return view('welcome');
 });
+
+Route::get('/home', 'HomeController@index');
 
 Auth::routes();
 
@@ -21,13 +23,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/post/{id}', ['as'=>'home.post','uses'=>'AdminPostsController@post']);
 
+//Route::get('/peticion', ['as'=>'home.peticion','uses'=>'PeticionController@index']);
+
+Route::resource('/peticion','PeticionController');
 
 Route::group(['middleware'=>'admin'], function (){
 
-    Route::get('/admin',function (){
-
-        return view('admin.index');
-    });
+    Route::get('/admin', ['as'=>'admin.index','uses'=>'AdminController@index']);
 
     Route::resource('admin/users','AdminUsersController');
 

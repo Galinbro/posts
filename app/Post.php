@@ -11,7 +11,7 @@ class Post extends Model
         'category_id',
         'photo_id',
         'title',
-        'body'
+        'archivo_id'
     ];
 
     public function user(){
@@ -26,4 +26,7 @@ class Post extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public function archivo(){
+        return $this->belongsTo('App\Archivo');
+    }
 }

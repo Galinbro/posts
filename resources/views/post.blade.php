@@ -25,7 +25,7 @@
         <hr>
 
         <!-- Post Content -->
-        <p>{{$post->body}}</p>
+        <p><a href="{{$post->archivo->file}}">Descargar</a></p>
         <hr>
 
 

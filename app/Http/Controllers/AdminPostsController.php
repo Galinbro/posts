@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Archivo;
 use App\Category;
 use App\Http\Requests\PostsCreateRequest;
 use App\Photo;
@@ -19,8 +20,8 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-        //
-        $posts = Post::all();
+
+        $posts = Post::paginate(15);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -59,6 +60,14 @@ class AdminPostsController extends Controller
 
         }
 
+        if($fileA = $request['archivo_id']){
+
+            $load = Archivo::create(['file'=>$fileA]);
+
+            $input['archivo_id'] = $load->id;
+
+        }
+
         $user->posts()->create($input);
 
         Session::flash('create_blog', 'El blog fue creado');
@@ -89,7 +98,11 @@ class AdminPostsController extends Controller
 
         $categories = Category::pluck('name', 'id')->all();
 
-        return view('admin.posts.edit', compact('post', 'categories'));
+        $url = Archivo::findOrFail($post->archivo_id);
+
+        $url = $url->file;
+
+        return view('admin.posts.edit', compact('post', 'categories', 'url'));
     }
 
     /**

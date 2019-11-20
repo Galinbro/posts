@@ -64,6 +64,9 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    @if(Auth::user()->isAdmin())
+                                        <a class="dropdown-item" href="{{route('admin.index')}}">Vista administrador</a>
+                                    @endif
                                 </div>
                             </li>
                         @endguest

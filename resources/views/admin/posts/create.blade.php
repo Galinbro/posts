@@ -18,13 +18,13 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('photo_id', 'Archivo:') !!}
+                    {!! Form::label('photo_id', 'Foto:') !!}
                     {!! Form::file('photo_id', ['class'=>'form-control']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('body', 'Descripcion:') !!}
-                    {!! Form::textarea('body', null, ['class'=>'form-control', 'row'=> 2]) !!}
+                    {!! Form::label('archivo_id', 'Archivo:') !!}
+                    {!! Form::text('archivo_id', null, ['class'=>'form-control']) !!}
                 </div>
 
 

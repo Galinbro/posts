@@ -29,7 +29,6 @@
         <thead>
           <tr>
             <th>Id</th>
-            <th>Foto</th>
             <th>Nombre</th>
             <th>Email</th>
             <th>Role</th>
@@ -45,7 +44,6 @@
             @foreach($users as $user)
           <tr>
             <td>{{$user->id}}</td>
-            <td><img height="45" src="{{$user->photo ? $user->photo->file : 'http://placehold.it/400x400'}}" alt=" "></td>
             <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
             <td>{{$user->email}}</td>
             <td>{{$user->role->name}}</td>
@@ -58,4 +56,10 @@
         @endif
        </tbody>
      </table>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+            {{$users->links()}}
+        </div>
+    </div>
 @endsection

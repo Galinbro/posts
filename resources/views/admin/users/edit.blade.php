@@ -9,9 +9,9 @@
     <div class="row">
 
 
-        <div class="col-sm-3">
+        <!--div class="col-sm-3">
             <img src="{{$user->photo ? $user->photo->file : 'http://placehold.it/400x400'}}" alt="" class="img-responsive img-rounded">
-        </div>
+        </div-->
 
         <div class="col-sm-9">
 
@@ -35,11 +35,6 @@
             <div class="form-group">
                 {!! Form::label('is_active', 'Estatus:') !!}
                 {!! Form::select('is_active', array(1 =>'Activo', 0=>'No Activo'), null, ['class'=>'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('photo_id', 'foto:') !!}
-                {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
             </div>
 
             <div class="form-group">
