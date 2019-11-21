@@ -20,7 +20,7 @@
                     <th>Fecha de emision</th>
                     <th>Fecha de cambio de estado</th>
                     <th>Responsable</th>
-                    <th>ug</th>
+                    <th>Cr</th>
                     <th>Emisor</th>
                     <th>Status</th>
                 </tr>

@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8180c5ed-673f-49f8-86b4-67ec3aa8cc38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PeticionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PeticionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TestMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestMail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/peticiones/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/peticiones/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/mail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/mail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -192,7 +196,7 @@
       <workItem from="1573742310439" duration="17708000" />
       <workItem from="1573766594278" duration="26726000" />
       <workItem from="1573829351420" duration="1493000" />
-      <workItem from="1574176567911" duration="24611000" />
+      <workItem from="1574176567911" duration="29593000" />
     </task>
     <servers />
   </component>

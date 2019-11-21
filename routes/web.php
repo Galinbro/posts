@@ -17,13 +17,13 @@ Route::get('/', function (){
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/emails',['as'=>'emails.mail','uses'=>'TestMail@index']);
+//Route::get('/emails',['as'=>'emails.mail','uses'=>'TestMail@index']);
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/post/{id}', ['as'=>'home.post','uses'=>'AdminPostsController@post']);
+//Route::get('/post/{id}', ['as'=>'home.post','uses'=>'AdminPostsController@post']);
 
 Route::resource('/peticion','PeticionController');
 

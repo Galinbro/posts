@@ -7,10 +7,22 @@ use App\Peticion;
 use App\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class PeticionController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +30,8 @@ class PeticionController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
 
-        $peticiones = Peticion::where('user_id', '=', $user->id)->paginate(15);
+        $peticiones = Peticion::where('user_id', '=', Auth::user()->id)->paginate(15);
 
         $responsables = Responsable::pluck('name', 'id')->all();
 
@@ -45,8 +56,6 @@ class PeticionController extends Controller
      */
     public function store(PeticionRequest $request)
     {
-        $input = $request->all();
-
         $user = Auth::user();
 
         $user->peticion()->create([ 'responsable_id'=>$request['responsable_id'],
@@ -57,6 +66,38 @@ class PeticionController extends Controller
             'argumento'=>$request['argumento']]);
 
         Session::flash('create_peticion', 'La peticion fue creada');
+
+        $to_name = Auth::user()->name;
+        $to_email = Auth::user()->email;
+
+        $peticion = Peticion::orderBy('id', 'desc')->first();
+
+        $status = $peticion->status;
+
+        switch ($status) {
+            case 0:
+                $estado = "Pendiente";
+                break;
+            case 1:
+                $estado = "Atendida";
+                break;
+            case 2:
+                $estado = "Finalizada";
+                break;
+        }
+
+        $body = "El numero de seguimiento de su peticion es: " . $peticion->id . ", el responsable es: " .
+            Responsable::findOrFail($peticion->responsable_id)->name . "y el estado de su peticion es: " .
+            $estado . ".";
+
+
+        $data = array('name'=>Auth::user()->name, 'body' => $body);
+
+        Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $data) {
+            $message->to($to_email, $to_name)->subject('Petición');
+            $message->from('galindo.hayashi@gmail.com','BEyG');
+        });
+
 
         return redirect('/peticion');
     }
