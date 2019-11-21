@@ -16,78 +16,135 @@
             <li>
                 <a href="{{route('admin.index')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
+            @if(\Illuminate\Support\Facades\Auth::user()->role->name == 'admin')
 
-            <li>
-                <a href="#"><i class="fa fa-wrench fa-fw"></i>Users<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{route('users.index')}}">All Users</a>
-                    </li>
+                <li>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{route('users.index')}}">Ver Usuarios</a>
+                        </li>
 
-                    <li>
-                        <a href="{{route('users.create')}}">Create User</a>
-                    </li>
-
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
-
-            <li>
-                <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{route('posts.index')}}">All Posts</a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('posts.create')}}">Create Post</a>
-                    </li>
-
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
+                        <li>
+                            <a href="{{route('users.create')}}">Crear Usuario</a>
+                        </li>
 
 
-            <li>
-                <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{route('categories.index')}}">All Categories</a>
-                    </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
 
-                    <li>
-                        <a href="{{route('categories.index')}}">Create Category</a>
-                    </li>
+                <li>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i>Responsables<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{route('responsable.index')}}">Crear Responsables</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
 
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
 
 
-            <li>
-                <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{route('media.index')}}">All Media</a>
-                    </li>
+                <li>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{route('posts.index')}}">All Posts</a>
+                        </li>
 
-                    <li>
-                        <a href="{{route('media.create')}}">Upload Media</a>
-                    </li>
+                        <li>
+                            <a href="{{route('posts.create')}}">Create Post</a>
+                        </li>
 
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
 
-            <li>
-                <a href="#"><i class="fa fa-wrench fa-fw"></i>Peticiones<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{route('peticiones.index')}}">All Peticiones</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{route('categories.index')}}">All Categories</a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('categories.index')}}">Create Category</a>
+                        </li>
+
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+
+
+                <li>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{route('media.index')}}">All Media</a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('media.create')}}">Upload Media</a>
+                        </li>
+
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i>Peticiones<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{route('peticiones.index')}}">All Peticiones</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+            @else
+                <li>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{route('posts.index')}}">All Posts</a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('posts.create')}}">Create Post</a>
+                        </li>
+
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+
+
+                <li>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{route('media.index')}}">All Media</a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('media.create')}}">Upload Media</a>
+                        </li>
+
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i>Peticiones<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{route('peticiones.index')}}">All Peticiones</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+            @endif
+
         </ul>
 
 

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Peticion;
+use App\Responsable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class AdminPeticionController extends Controller
 {
@@ -59,7 +63,9 @@ class AdminPeticionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $peticion = Peticion::findOrFail($id);
+
+        return view('admin.peticiones.edit', compact('peticion'));
     }
 
     /**
@@ -71,7 +77,63 @@ class AdminPeticionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $peticion = Peticion::findOrFail($id);
+
+        $input = $request->all();
+
+        $previa = $peticion->status;
+
+        switch ($previa) {
+            case 0:
+                $previa = "Pendiente";
+                break;
+            case 1:
+                $previa = "Atendida";
+                break;
+            case 2:
+                $previa = "Finalizada";
+                break;
+        }
+
+        $peticion->status = (integer)$input['status'];
+
+        //return $peticion;
+
+        $peticion->save();
+
+        Session::flash('update_peticion', 'La peticion fue actualizada');
+
+
+        $to_name =$peticion->user->name;
+        $to_email = $peticion->user->email;
+        $status = $peticion->status;
+
+        switch ($status) {
+            case 0:
+                $estado = "Pendiente";
+                break;
+            case 1:
+                $estado = "Atendida";
+                break;
+            case 2:
+                $estado = "Finalizada";
+                break;
+        }
+
+        $body = "Su peticion con numero de seguimiento " . $peticion->id .
+                 ", ha cambiado de estado de " . $previa . " a " . $estado . ".";
+
+
+        $data = array('name'=>Auth::user()->name, 'body' => $body);
+
+        Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $data) {
+            $message->to($to_email, $to_name)->subject('Petición');
+            $message->from('galindo.hayashi@gmail.com','BEyG');
+        });
+
+
+
+        return redirect('admin/peticiones');
     }
 
     /**
@@ -84,4 +146,6 @@ class AdminPeticionController extends Controller
     {
         //
     }
+
+
 }

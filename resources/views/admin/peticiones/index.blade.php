@@ -5,9 +5,9 @@
 
     <h1>Peticiones</h1>
 
-    @if(Session::has('create_peticion'))
+    @if(Session::has('update_peticion'))
 
-        <p class="bg-success">{{session('create_peticion')}}</p>
+        <p class="bg-success">{{session('update_peticion')}}</p>
 
     @endif
 
@@ -22,7 +22,7 @@
                     <th>Responsable</th>
                     <th>Cr</th>
                     <th>Emisor</th>
-                    <th>Status</th>
+                    <th>Estatus</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,13 +36,15 @@
                             <td>{{$peticion->ug}}</td>
                             <td>{{$peticion->user->name}}</td>
                             <td>
-                                @if($peticion->status == 0)
-                                    Pendiente
-                                @elseif($peticion->status == 1)
-                                    En Proceso
-                                @else
-                                    Finalizada
-                                @endif
+                                <a href="{{route('peticiones.edit', $peticion->id)}}">
+                                    @if($peticion->status == 0)
+                                        Pendiente
+                                    @elseif($peticion->status == 1)
+                                        En Proceso
+                                    @else
+                                        Finalizada
+                                    @endif
+                                </a>
                             </td>
                         </tr>
                     @endforeach
@@ -58,4 +60,6 @@
     </div>
 
     <script src="{{asset('js/home.js')}}"></script>
+
+
 @endsection

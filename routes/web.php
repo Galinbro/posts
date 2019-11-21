@@ -41,4 +41,6 @@ Route::group(['middleware'=>'admin'], function (){
 
     Route::resource('admin/peticiones','AdminPeticionController');
 
+    Route::resource('admin/responsable','AdminResponsableController');
+
 });
