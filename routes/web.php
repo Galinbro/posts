@@ -23,6 +23,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/callback/{provider}', 'SocialController@callback');
+
 //Route::get('/post/{id}', ['as'=>'home.post','uses'=>'AdminPostsController@post']);
 
 Route::resource('/peticion','PeticionController');
