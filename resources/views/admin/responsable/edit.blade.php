@@ -21,6 +21,12 @@
             </div>
             {!! Form::close() !!}
 
+            {!! Form::open(['method' =>'DELETE','action'=>['AdminResponsableController@destroy', $responsable->id]]) !!}
+
+            <div class="form-group">
+                {!! Form::submit('Borrar Responsable', ['class'=>'btn btn-danger col-sm-6']) !!}
+            </div>
+            {!! Form::close() !!}
         </div>
     </div>
 

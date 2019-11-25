@@ -64,7 +64,7 @@
             </div>
 
             <!-- Tab01 -->
-            <div class="tab01">
+            <div class="tab01" id="tabProducto">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs">
                     @php
@@ -73,69 +73,71 @@
                     @endphp
                     @if($categories)
                         @foreach($categories as $category)
-                            <li class="nav-item">
-                                <a class="nav-link {{($i==0)?'active':''}}" data-toggle="tab" href="#{{$category->name}}">{{$category->name}}</a>
-                            </li>
-                            @php
-                                $i += 1
-                            @endphp
+                            @if($category->group == 1)
+                                <li class="nav-item" id="nav-item-producto">
+                                    <a class="nav-link {{($i==0)?'active':''}}" data-toggle="tab" href="#{{$category->name}}">{{$category->name}}</a>
+                                </li>
+                                @php
+                                    $i += 1
+                                @endphp
+                            @endif
                         @endforeach
                     @endif
 
                 </ul>
+                <div class="tab-content p-t-35">
+                    @if($categories)
+                        @foreach($categories as $category)
+                            @if($category->group == 1)
+                                    <!-- - -->
+                                <div class="tab-pane fade {{($j == 0) ? 'show active' : ''}}" id="{{$category->name}}">
+                                    @php
+                                        $j += 1
+                                    @endphp
+                                    <div class="row">
+                                        @if($posts)
+                                            @foreach($posts as $post)
+                                                @if($category->id == $post->category_id && $post->category->group == 1)
+                                                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+                                                        <!-- Block2 -->
+                                                        <div class="block2">
+                                                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
+                                                                @php
+                                                                    $p = App\Post::findOrFail($post->id);
 
-                @if($categories)
-                    @foreach($categories as $category)
-                        <div class="tab-content p-t-35">
-                            <!-- - -->
-                            <div class="tab-pane fade {{($j == 0) ? 'show active' : ''}}" id="{{$category->name}}">
-                                @php
-                                    $j += 1
-                                @endphp
-                                <div class="row">
-                                    @if($posts)
-                                        @foreach($posts as $post)
-                                            @if($category->id == $post->category_id)
-                                                <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                                                    <!-- Block2 -->
-                                                    <div class="block2">
-                                                        <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                                            @php
-                                                                $p = App\Post::findOrFail($post->id);
+                                                                    $a = explode("/", $p->photo->file);
 
-                                                                $a = explode("/", $p->photo->file);
+                                                                    $link = end($a);
+                                                                @endphp
+                                                                <img src="{{ URL::to('/') }}/images/{{$link}}" alt="IMG-PRODUCT">
 
-                                                                $link = end($a);
-                                                            @endphp
-                                                            <img src="{{ URL::to('/') }}/images/{{$link}}" alt="IMG-PRODUCT">
+                                                                <div class="block2-overlay trans-0-4">
 
-                                                            <div class="block2-overlay trans-0-4">
-
-                                                                <div class="block2-btn-addcart w-size1 trans-0-4">
-                                                                    <!-- Button -->
-                                                                    <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" >
-                                                                        <a class="block2-name dis-block s-text3white p-b-5 hov6" href="{{$post->archivo->file}}" target="_blank">Abrir</a>
-                                                                    </button>
+                                                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                                                        <!-- Button -->
+                                                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" >
+                                                                            <a class="block2-name dis-block s-text3white p-b-5 hov6" href="{{$post->archivo->file}}" target="_blank">Abrir</a>
+                                                                        </button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
 
-                                                        <div class="block2-txt p-t-20">
-                                                            <a href="{{$post->archivo->file}}" target="_blank" class="block2-name dis-block s-text3 p-b-5">
-                                                                Creediproveedores
-                                                            </a>
+                                                            <div class="block2-txt p-t-20">
+                                                                <a href="{{$post->archivo->file}}" target="_blank" class="block2-name dis-block s-text3 p-b-5">
+                                                                    {{$post->title}}
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            @endif
-                                        @endforeach
-                                    @endif
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-
+                            @endif
+                        @endforeach
+                    @endif
+                </div>
             </div>
         </div>
     </section>
@@ -150,204 +152,79 @@
             </div>
 
             <!-- Tab01 -->
-            <div class="tab01">
+            <div class="tab01" id="tabControl">
                 <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#controlI" role="tab">Financiamiento</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#controlInterno" role="tab">Cash Managment</a>
-                    </li>
+                <ul class="nav nav-tabs">
+                    @php
+                        $i = 0;
+                        $j = 0;
+                    @endphp
+                    @if($categories)
+                        @foreach($categories as $category)
+                            @if($category->group == 2)
+                                <li class="nav-item" id="nav-item-control">
+                                    <a class="nav-link {{($i==0)?'active':''}}" data-toggle="tab" href="#{{$category->name}}">{{$category->name}}</a>
+                                </li>
+                                @php
+                                    $i += 1
+                                @endphp
+                            @endif
+                        @endforeach
+                    @endif
+
                 </ul>
-
-                <!-- Tab panes -->
                 <div class="tab-content p-t-35">
-                    <!-- - -->
-                    <div class="tab-pane fade show active" id="controlI" role="tabpanel">
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                                <!-- Block2 -->
-                                <div class="block2">
-                                    <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                        <img src="images/item-02.jpg" alt="IMG-PRODUCT">
+                @if($categories)
+                    @foreach($categories as $category)
+                        @if($category->group == 2)
+                            <!-- - -->
+                                <div class="tab-pane fade {{($j == 0) ? 'show active' : ''}}" id="{{$category->name}}">
+                                    @php
+                                        $j += 1
+                                    @endphp
+                                    <div class="row">
+                                        @if($posts)
+                                            @foreach($posts as $post)
+                                                @if($category->id == $post->category_id && $post->category->group == 2)
+                                                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+                                                        <!-- Block2 -->
+                                                        <div class="block2">
+                                                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
+                                                                @php
+                                                                    $p = App\Post::findOrFail($post->id);
 
-                                        <div class="block2-overlay trans-0-4">
+                                                                    $a = explode("/", $p->photo->file);
 
-                                            <div class="block2-btn-addcart w-size1 trans-0-4">
-                                                <!-- Button -->
-                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                    Arrendamiento Puro
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                                    $link = end($a);
+                                                                @endphp
+                                                                <img src="{{ URL::to('/') }}/images/{{$link}}" alt="IMG-PRODUCT">
 
-                                    <div class="block2-txt p-t-20">
-                                        <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                            Arrendamiento Puro
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                                                                <div class="block2-overlay trans-0-4">
 
-                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                                <!-- Block2 -->
-                                <div class="block2">
-                                    <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                        <img src="images/item-08.jpg" alt="IMG-PRODUCT">
+                                                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                                                        <!-- Button -->
+                                                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" >
+                                                                            <a class="block2-name dis-block s-text3white p-b-5 hov6" href="{{$post->archivo->file}}" target="_blank">Abrir</a>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                                        <div class="block2-overlay trans-0-4">
-
-                                            <div class="block2-btn-addcart w-size1 trans-0-4">
-                                                <!-- Button -->
-                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                    BBVA Leasing
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="block2-txt p-t-20">
-                                        <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                            BBVA Leasing
-                                        </a>
+                                                            <div class="block2-txt p-t-20">
+                                                                <a href="{{$post->archivo->file}}" target="_blank" class="block2-name dis-block s-text3 p-b-5">
+                                                                    {{$post->title}}
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                                <!-- Block2 -->
-                                <div class="block2">
-                                    <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                        <img src="images/item-10.jpg" alt="IMG-PRODUCT">
-
-                                        <div class="block2-overlay trans-0-4">
-
-                                            <div class="block2-btn-addcart w-size1 trans-0-4">
-                                                <!-- Button -->
-                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                    CrediProveedor
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="block2-txt p-t-20">
-                                        <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                            CrediProveedor
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- - -->
-                    <div class="tab-pane fade" id="controlInterno" role="tabpanel">
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                                <!-- Block2 -->
-                                <div class="block2">
-                                    <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                        <img src="images/item-07.jpg" alt="IMG-PRODUCT">
-
-                                        <div class="block2-overlay trans-0-4">
-
-                                            <div class="block2-btn-addcart w-size1 trans-0-4">
-                                                <!-- Button -->
-                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                    Add to Cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="block2-txt p-t-20">
-                                        <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                            Frayed denim shorts
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                                <!-- Block2 -->
-                                <div class="block2">
-                                    <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                        <img src="images/item-01.jpg" alt="IMG-PRODUCT">
-
-                                        <div class="block2-overlay trans-0-4">
-
-                                            <div class="block2-btn-addcart w-size1 trans-0-4">
-                                                <!-- Button -->
-                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                    Add to Cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="block2-txt p-t-20">
-                                        <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                            Herschel supply co 25l
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                                <!-- Block2 -->
-                                <div class="block2">
-                                    <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                        <img src="images/item-14.jpg" alt="IMG-PRODUCT">
-
-                                        <div class="block2-overlay trans-0-4">
-
-                                            <div class="block2-btn-addcart w-size1 trans-0-4">
-                                                <!-- Button -->
-                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                    Add to Cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="block2-txt p-t-20">
-                                        <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                            Denim jacket blue
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                                <!-- Block2 -->
-                                <div class="block2">
-                                    <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                        <img src="images/item-06.jpg" alt="IMG-PRODUCT">
-
-                                        <div class="block2-overlay trans-0-4">
-
-                                            <div class="block2-btn-addcart w-size1 trans-0-4">
-                                                <!-- Button -->
-                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                    Add to Cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="block2-txt p-t-20">
-                                        <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                            Herschel supply co 25l
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
@@ -355,7 +232,7 @@
 
 
     <!-- Banner video -->
-    <section class="parallax0 parallax100">
+    <section class="parallax0 parallax100" style="background-image: url({{ URL::to('/') }}/images/video-beyg.jpg);">
         <div class="overlay0 p-t-190 p-b-200">
             <div class="flex-col-c-m p-l-15 p-r-15">
 				<span class="m-text9 p-t-45 fs-20-sm">
@@ -629,6 +506,8 @@
             </div>
         </div>
     </div>
+
+
     <script src="{{asset('js/home.js')}}"></script>
     <script type="text/javascript">
         $('.parallax100').parallax100();
@@ -666,13 +545,22 @@
         chart.draw(OrgChart.action.init);
     </script>
     <script>
-        $(".nav-link").click(function(){
+        $("#nav-item-producto").click(function(){
             //alert($(this).attr('href'));
-            if($('.tab01').find('.active').hasClass('show'))
-                $('.tab01').find('.active').removeClass("show");
-            $('.tab01').find('.active').removeClass("active");
+            if($('#tabProducto').find('.active').hasClass('show'))
+                $('#tabProducto').find('.active').removeClass("show");
+            $('#tabProducto').find('.active').removeClass("active");
 
-            $('.tab01').find('.active').addClass("fade");
+            $('#tabProducto').find('.active').addClass("fade");
+        });
+
+        $("#nav-item-control").click(function(){
+            //alert($(this).attr('href'));
+            if($('#tabControl').find('.active').hasClass('show'))
+                $('#tabControl').find('.active').removeClass("show");
+            $('#tabControl').find('.active').removeClass("active");
+
+            $('#tabControl').find('.active').addClass("fade");
         });
     </script>
 

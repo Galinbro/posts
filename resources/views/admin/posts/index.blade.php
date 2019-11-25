@@ -20,9 +20,22 @@
 
     @endif
 
-    <h1>Posts</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <h1>Posts</h1>
+        </div>
+        <div class="col-sm-4">
+            <input class="form-control" id="filtro" type="text" placeholder="Filtrar.." style="margin-top: 25px;">
+        </div>
+        <div class="col-sm-4">
 
-   <table class="table table-striped">
+        </div>
+    </div>
+
+
+
+
+   <table class="table table-striped" id="posts">
        <thead>
            <tr>
                <th>Id</th>
@@ -59,4 +72,17 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            $("#filtro").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#posts tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 @endsection

@@ -27,8 +27,8 @@
             </div>
 
             <div class="form-group">
-                {!! Form::label('archivo_id', 'Descripcion:') !!}
-                {!! Form::text('archivo_id', null, ['class'=>'form-control']) !!}
+                {!! Form::label('archivo_id', 'Archivo:') !!}
+                {!! Form::text('archivo_id', $url , ['class'=>'form-control']) !!}
             </div>
 
 

@@ -32,8 +32,8 @@ public function index(){
             break;
     }
 
-    $body = "El numero de seguimiento de su peticion es: " . $peticion->id . ", el responsable es: " .
-        Responsable::findOrFail($peticion->responsable_id)->name . ", el estado de su peticion es: " .
+    $body = "El numero de seguimiento de su peticion es " . $peticion->id . ", el responsable es " .
+        Responsable::findOrFail($peticion->responsable_id)->name . ", el estado de su peticion es " .
         $estado . ".";
 
 

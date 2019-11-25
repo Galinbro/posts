@@ -67,14 +67,13 @@ class PeticionController extends Controller
 
         Session::flash('create_peticion', 'La peticion fue creada');
 
-        $to_name = Auth::user()->name;
-        $to_email = Auth::user()->email;
-
         $peticion = Peticion::orderBy('id', 'desc')->first();
 
-        $status = $peticion->status;
+        $to_name = Auth::user()->name;
+        $to_email = Auth::user()->email;
+        $cc_responsable = $peticion->responsable->email;
 
-        switch ($status) {
+        switch ($peticion->status) {
             case 0:
                 $estado = "Pendiente";
                 break;
@@ -86,15 +85,16 @@ class PeticionController extends Controller
                 break;
         }
 
-        $body = "El numero de seguimiento de su peticion es: " . $peticion->id . ", el responsable es: " .
-            Responsable::findOrFail($peticion->responsable_id)->name . "y el estado de su peticion es: " .
+        $body = "El numero de seguimiento de su peticion es " . $peticion->id . ", el responsable es " .
+            Responsable::findOrFail($peticion->responsable_id)->name . ", el estado de su peticion es " .
             $estado . ".";
 
 
         $data = array('name'=>Auth::user()->name, 'body' => $body);
 
-        Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $data) {
+        Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $data, $cc_responsable) {
             $message->to($to_email, $to_name)->subject('Petición');
+            $message->cc($cc_responsable);
             $message->from('galindo.hayashi@gmail.com','BEyG');
         });
 

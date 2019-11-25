@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Responsable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminResponsableController extends Controller
 {
@@ -38,6 +39,8 @@ class AdminResponsableController extends Controller
     public function store(Request $request)
     {
         Responsable::create($request->all());
+
+        Session::flash('create_resp', 'El responsable fue creado');
 
         return redirect('/admin/responsable');
     }
@@ -79,6 +82,8 @@ class AdminResponsableController extends Controller
 
         $responsable->update($request->all());
 
+        Session::flash('update_resp', 'El responsable fue actualizado');
+
         return redirect('/admin/responsable');
     }
 
@@ -90,6 +95,13 @@ class AdminResponsableController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = Responsable::findOrFail($id);
+
+
+        $user->delete();
+
+        Session::flash('deleted_resp', 'El responsable fue borrado');
+
+        return redirect('/admin/responsable');
     }
 }

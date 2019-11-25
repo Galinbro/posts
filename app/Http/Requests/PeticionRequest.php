@@ -28,6 +28,7 @@ class PeticionRequest extends FormRequest
             'ug'=> 'required',
             'id_grupo'=> 'required',
             'id_cliente'=> 'required',
+            'nb_cliente'=> 'required',
             'producto'=> 'required',
             'tarifa'=> 'required',
             'rentabilidad'=> 'required',

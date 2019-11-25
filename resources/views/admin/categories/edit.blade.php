@@ -13,6 +13,10 @@
                 {!! Form::text('name', null, ['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
+                {!! Form::label('group', 'Nombre:') !!}
+                {!! Form::select('group', [''=> 'Selecciones un grupo', 1=>'Productos', 2=>'Control Interno',3=>'One Team'],null, ['class'=>'form-control']) !!}
+            </div>
+            <div class="form-group">
                 {!! Form::submit('Actualizar categoria', ['class'=>'btn btn-primary col-sm-6']) !!}
             </div>
             {!! Form::close() !!}

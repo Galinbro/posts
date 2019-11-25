@@ -2,7 +2,25 @@
 
 @section('content')
 
-    <h1>Categorias</h1>
+    @if(Session::has('deleted_resp'))
+
+        <p class="bg-danger">{{session('deleted_resp')}}</p>
+
+    @endif
+
+    @if(Session::has('create_resp'))
+
+        <p class="bg-success">{{session('create_resp')}}</p>
+
+    @endif
+
+    @if(Session::has('update_resp'))
+
+        <p class="bg-success">{{session('update_resp')}}</p>
+
+    @endif
+
+    <h1>Responsables</h1>
 
     <div class="row">
         <div class="col-sm-6">

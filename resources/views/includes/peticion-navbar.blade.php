@@ -28,7 +28,11 @@
                 <li>
                     <a href="#nosotros">Nosotros</a>
                 </li>
-                web
+
+                <li>
+                    <a href="{{route('peticion.index')}}">Peticiones</a>
+                </li>
+
             </ul>
         </nav>
     </div>

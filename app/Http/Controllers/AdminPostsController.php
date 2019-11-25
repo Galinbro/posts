@@ -20,9 +20,9 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-
         $posts = Post::paginate(15);
-        return view('admin.posts.index', compact('posts'));
+        $categories = Category::pluck('name', 'id')->all();
+        return view('admin.posts.index', compact('posts', 'categories'));
     }
 
     /**
@@ -126,6 +126,17 @@ class AdminPostsController extends Controller
         $input['photo_id'] = $photo->id;
 
         }
+        $postToChange = Post::findOrFail($id );
+
+        $postToChange = $postToChange->archivo_id;
+
+        $url = Archivo::findOrFail($postToChange);
+
+        $url['file'] = $input['archivo_id'];
+
+        $input['archivo_id'] = $url['id'];
+
+        $url->save();
 
         Auth::user()->posts()->whereId($id)->first()->update($input);
 

@@ -20,6 +20,7 @@ class CreatePeticionsTable extends Migration
             $table->string('ug');
             $table->string('id_grupo');
             $table->string('id_cliente');
+            $table->string('nb_cliente');
             $table->string('producto');
             $table->double('tarifa');
             $table->double('rentabilidad');

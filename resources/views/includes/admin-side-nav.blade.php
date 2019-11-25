@@ -4,7 +4,7 @@
         <ul class="nav" id="side-menu">
             <li class="sidebar-search">
                 <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Search...">
+                    <input type="text" id="myInput" class="form-control" placeholder="Search...">
                     <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">
                                         <i class="fa fa-search"></i>
@@ -38,6 +38,9 @@
                     <a href="#"><i class="fa fa-wrench fa-fw"></i>Responsables<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
+                            <a href="{{route('responsable.index')}}">Ver Responsables</a>
+                        </li>
+                        <li>
                             <a href="{{route('responsable.index')}}">Crear Responsables</a>
                         </li>
                     </ul>
@@ -50,11 +53,11 @@
                     <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{route('posts.index')}}">All Posts</a>
+                            <a href="{{route('posts.index')}}">Ver Posts</a>
                         </li>
 
                         <li>
-                            <a href="{{route('posts.create')}}">Create Post</a>
+                            <a href="{{route('posts.create')}}">Crear Post</a>
                         </li>
 
                     </ul>
@@ -66,11 +69,11 @@
                     <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{route('categories.index')}}">All Categories</a>
+                            <a href="{{route('categories.index')}}">ver Categorias</a>
                         </li>
 
                         <li>
-                            <a href="{{route('categories.index')}}">Create Category</a>
+                            <a href="{{route('categories.index')}}">Crear Categoria</a>
                         </li>
 
                     </ul>
@@ -82,11 +85,11 @@
                     <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{route('media.index')}}">All Media</a>
+                            <a href="{{route('media.index')}}">Ver Media</a>
                         </li>
 
                         <li>
-                            <a href="{{route('media.create')}}">Upload Media</a>
+                            <a href="{{route('media.create')}}">Subir Media</a>
                         </li>
 
                     </ul>
@@ -97,7 +100,7 @@
                     <a href="#"><i class="fa fa-wrench fa-fw"></i>Peticiones<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{route('peticiones.index')}}">All Peticiones</a>
+                            <a href="{{route('peticiones.index')}}">Ver Peticiones</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
@@ -107,11 +110,11 @@
                     <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{route('posts.index')}}">All Posts</a>
+                            <a href="{{route('posts.index')}}">Ver Posts</a>
                         </li>
 
                         <li>
-                            <a href="{{route('posts.create')}}">Create Post</a>
+                            <a href="{{route('posts.create')}}">Crear Post</a>
                         </li>
 
                     </ul>
@@ -123,11 +126,11 @@
                     <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{route('media.index')}}">All Media</a>
+                            <a href="{{route('media.index')}}">Ver Media</a>
                         </li>
 
                         <li>
-                            <a href="{{route('media.create')}}">Upload Media</a>
+                            <a href="{{route('media.create')}}">Subir Media</a>
                         </li>
 
                     </ul>
@@ -138,7 +141,7 @@
                     <a href="#"><i class="fa fa-wrench fa-fw"></i>Peticiones<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{route('peticiones.index')}}">All Peticiones</a>
+                            <a href="{{route('peticiones.index')}}">Ver Peticiones</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
@@ -151,3 +154,4 @@
     </div>
     <!-- /.sidebar-collapse -->
 </div>
+

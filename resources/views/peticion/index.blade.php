@@ -21,7 +21,7 @@
                 {!! Form::select('responsable_id', ['' => 'Elige un responsable'] + $responsables, null, ['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('ug', 'Ug:') !!}
+                {!! Form::label('ug', 'Cr:') !!}
                 {!! Form::text('ug', null, ['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
@@ -31,6 +31,10 @@
             <div class="form-group">
                 {!! Form::label('id_cliente', 'Id del cliente:') !!}
                 {!! Form::text('id_cliente', null, ['class'=>'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('nb_cliente', 'Nombre del cliente:') !!}
+                {!! Form::text('nb_cliente', null, ['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('producto', 'Producto:') !!}
@@ -80,7 +84,7 @@
                         <tr>
                             <td>{{$peticion->id}}</td>
                             <td>{{$peticion->responsable['name']}}</td>
-                            <td>{{$peticion->id_cliente}}</td>
+                            <td>{{$peticion->nb_cliente}}</td>
                             <td>{{$peticion->producto}}</td>
                             <td>
                                 @if($peticion->status == 0)

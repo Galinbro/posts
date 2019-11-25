@@ -17,9 +17,9 @@
 
     @endif
 
-    @if(Session::has('edit_user'))
+    @if(Session::has('update_user'))
 
-        <p class="bg-success">{{session('edit_user')}}</p>
+        <p class="bg-success">{{session('update_user')}}</p>
 
     @endif
 

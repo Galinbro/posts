@@ -17,6 +17,7 @@ class Peticion extends Model
         'ug',
         'id_grupo',
         'id_cliente',
+        'nb_cliente',
         'producto',
         'tarifa',
         'rentabilidad',

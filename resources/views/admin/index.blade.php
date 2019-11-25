@@ -19,10 +19,10 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Posts', 'Categories', 'Comments'],
+                labels: ['Pendientes', 'Proceso', 'Finalizadas'],
                 datasets: [{
                     label: 'Información',
-                    data: [{{$postCount}}, {{$categoriesCount}}],
+                    data: [{{$pendientes}}, {{$proceso}}, {{$finalizadas}}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

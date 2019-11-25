@@ -13,6 +13,10 @@
                     {!! Form::text('name', null, ['class'=>'form-control']) !!}
                 </div>
                 <div class="form-group">
+                    {!! Form::label('group', 'Grupo:') !!}
+                    {!! Form::select('group', [''=> 'Selecciones un grupo', 1=>'Productos', 2=>'Control Interno',3=>'One Team'] ,null, ['class'=>'form-control']) !!}
+                </div>
+                <div class="form-group">
                     {!! Form::submit('Crear categoria', ['class'=>'btn btn-primary']) !!}
                 </div>
             {!! Form::close() !!}
@@ -22,11 +26,14 @@
         <div class="col-sm-6">
             @if($categories)
 
+
+
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>id</th>
                         <th>nombre</th>
+                        <th>Grupo</th>
                         <th>creado</th>
                         <th>Actualizado</th>
                     </tr>
@@ -36,6 +43,15 @@
                         <tr>
                             <td>{{$category->id}}</td>
                             <td><a href="{{route('categories.edit', $category->id)}}">{{$category->name}}</a></td>
+                            <td>
+                                @if($category->group == 1)
+                                    Productos
+                                @elseif($category->group == 2)
+                                    Control Interno
+                                @else
+                                    One Team
+                                @endif
+                            </td>
                             <td>{{$category->created_at ? $category->created_at->diffForhumans() : 'Sin fecha'}}</td>
                             <td>{{$category->updated_at ? $category->updated_at->diffForhumans() : 'Sin fecha'}}</td>
                         </tr>
