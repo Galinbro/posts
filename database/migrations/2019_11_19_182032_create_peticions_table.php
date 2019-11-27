@@ -27,6 +27,7 @@ class CreatePeticionsTable extends Migration
             $table->string('reciprocidad');
             $table->double('reciprocidad_num');
             $table->string('argumento');
+            $table->string('comentario')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
         });

@@ -84,15 +84,17 @@
                         <tr>
                             <td>{{$peticion->id}}</td>
                             <td>{{$peticion->responsable['name']}}</td>
-                            <td>{{$peticion->nb_cliente}}</td>
+                            <td><a href="{{route('peticion.edit', $peticion->id)}}">{{$peticion->nb_cliente}}</a></td>
                             <td>{{$peticion->producto}}</td>
                             <td>
                                 @if($peticion->status == 0)
                                     Pendiente
                                 @elseif($peticion->status == 1)
                                     En Proceso
-                                @else
+                                @elseif($peticion->status == 2)
                                     Finalizada
+                                @else
+                                    Correciones
                                 @endif
                             </td>
                         </tr>

@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('head-scripts')
+    <script src="https://kit.fontawesome.com/4350f49f68.js" crossorigin="anonymous"></script>
+@endsection
+
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -57,7 +62,7 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a href="{{ url('/auth/redirect/google') }}" class="btn btn-primary"><i class="fa fa-google"></i> Google</a>
+                                <a href="{{ url('/auth/redirect/google') }}" class="btn"><img width="30px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"></img></a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

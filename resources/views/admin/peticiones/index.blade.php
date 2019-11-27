@@ -18,10 +18,11 @@
                 <tr>
                     <th>Id</th>
                     <th>Fecha de emision</th>
-                    <th>Fecha de cambio de estado</th>
+                    <th>Ultimo cambio</th>
                     <th>Responsable</th>
                     <th>Cr</th>
                     <th>Emisor</th>
+                    <th>Cliente</th>
                     <th>Estatus</th>
                 </tr>
                 </thead>
@@ -35,14 +36,17 @@
                             <td>{{$peticion->responsable['name']}}</td>
                             <td>{{$peticion->ug}}</td>
                             <td>{{$peticion->user->name}}</td>
+                            <td><a href="{{route('peticiones.show', $peticion->id)}}">{{Illuminate\Support\Str::limit($peticion->nb_cliente, 40)}}</a></td>
                             <td>
                                 <a href="{{route('peticiones.edit', $peticion->id)}}">
                                     @if($peticion->status == 0)
                                         Pendiente
                                     @elseif($peticion->status == 1)
                                         En Proceso
-                                    @else
+                                    @elseif($peticion->status == 2)
                                         Finalizada
+                                    @else
+                                        Correciones
                                     @endif
                                 </a>
                             </td>

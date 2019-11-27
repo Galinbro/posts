@@ -60,7 +60,7 @@ class PeticionController extends Controller
 
         $user->peticion()->create([ 'responsable_id'=>$request['responsable_id'],
             'ug'=>$request['ug'], 'producto'=>$request['producto'],
-            'id_grupo'=>$request['id_grupo'], 'id_cliente'=>$request['id_cliente'],
+            'id_grupo'=>$request['id_grupo'], 'id_cliente'=>$request['id_cliente'], 'nb_cliente'=>$request['nb_cliente'],
             'tarifa'=>$request['tarifa'], 'rentabilidad'=>$request['rentabilidad'],
             'reciprocidad'=>$request['reciprocidad'], 'reciprocidad_num'=>$request['reciprocidad_num'],
             'argumento'=>$request['argumento']]);
@@ -89,8 +89,19 @@ class PeticionController extends Controller
             Responsable::findOrFail($peticion->responsable_id)->name . ", el estado de su peticion es " .
             $estado . ".";
 
+        $datos = ["Grupo: " . $request['id_grupo'] ,
+                "Cliente: " . $request['id_cliente'] ,
+                "Nombre del cliente: " . $request['nb_cliente'] ,
+                "Producto: " . $request['producto'] ,
+                "Tarifa: " . $request['tarifa'] ,
+                "Rentabilidad: " . $request['rentabilidad'] ,
+                "Reciprocidad: " . $request['reciprocidad'] ,
+                "Numero de reciprocidad: " . $request['reciprocidad_num'] ,
+                "Argumento: " . $request['argumento']];
 
-        $data = array('name'=>Auth::user()->name, 'body' => $body);
+        $comentario = NULL;
+
+        $data = array('name'=>Auth::user()->name, 'body' => $body, 'datos'=>$datos, 'comentario' => $comentario);
 
         Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $data, $cc_responsable) {
             $message->to($to_email, $to_name)->subject('Petición');
@@ -121,7 +132,11 @@ class PeticionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $peticion = Peticion::findOrFail($id);
+
+        $responsables = Responsable::pluck('name', 'id')->all();
+
+        return view('peticion.edit', compact('peticion', 'responsables'));
     }
 
     /**
@@ -133,7 +148,11 @@ class PeticionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $peticion = Peticion::findOrFail($id);
+
+        $peticion->update($request->all());
+
+        return redirect('/peticion');
     }
 
     /**

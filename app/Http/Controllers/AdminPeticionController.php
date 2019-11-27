@@ -52,7 +52,10 @@ class AdminPeticionController extends Controller
      */
     public function show($id)
     {
-        //
+        $peticion = Peticion::findOrFail($id);
+        $responsables = Responsable::pluck('name', 'id')->all();
+
+        return view('admin.peticiones.show', compact('peticion', 'responsables'));
     }
 
     /**
@@ -96,6 +99,7 @@ class AdminPeticionController extends Controller
         }
 
         $peticion->status = (integer)$input['status'];
+        $peticion->comentario = $input['comentario'];
 
         //return $peticion;
 
@@ -118,13 +122,17 @@ class AdminPeticionController extends Controller
             case 2:
                 $estado = "Finalizada";
                 break;
+            case 3:
+                $estado = "Correcciones";
+                break;
         }
 
         $body = "Su peticion con numero de seguimiento " . $peticion->id .
                  ", ha cambiado de estado de " . $previa . " a " . $estado . ".";
+        $comentario = $input['comentario'];
+        $datos = [];
 
-
-        $data = array('name'=>Auth::user()->name, 'body' => $body);
+        $data = array('name'=>Auth::user()->name, 'body' => $body, 'datos' => $datos ,'comentario' => $comentario);
 
         Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $data) {
             $message->to($to_email, $to_name)->subject('Petición');
