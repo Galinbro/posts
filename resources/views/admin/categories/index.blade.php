@@ -2,7 +2,25 @@
 
 @section('content')
 
-    <h1>Categorias</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <h1>Categorias</h1>
+        </div>
+        <div class="col-sm-8">
+            {!! Form::open(['route' =>'categories.index', 'method'=> 'GET', 'class'=>'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
+
+            <div class="form-group">
+                {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Nombre de categoria']) !!}
+                {!! Form::select('category',[''=>'Seleccione un grupo', 1=> 'Productos', 2=>'Control Interno', 3=>'Experiencia Unica'], null, ['class'=>'form-control']) !!}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Buscar</button>
+            </div>
+            <i class="fa fa-filter" aria-hidden="true" id="filter"></i>
+            {!! Form::close() !!}
+
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-sm-6">
@@ -67,4 +85,19 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (window.location.href.indexOf("?") > -1) {
+                $('#filter').attr('class', 'fa fa-filter');
+                $("#filter").click(function () {
+                    window.location.href = "{{URL::to('admin/categories')}}"
+                });
+            }else{
+                $('#filter').attr('class', '');
+            }
+        });
+    </script>
 @endsection

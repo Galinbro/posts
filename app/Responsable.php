@@ -14,4 +14,9 @@ class Responsable extends Model
     public function peticion(){
         return $this->hasMany('App\Peticion');
     }
+
+    public function scopeName($query, $name){
+            if (trim($name) != "")
+                $query->where('name', 'LIKE' ,'%'.$name.'%');
+        }
 }

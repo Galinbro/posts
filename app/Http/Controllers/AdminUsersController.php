@@ -19,10 +19,10 @@ class AdminUsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $users = User::paginate(25);
+
+        $users = User::name($request->get('name'))->type($request->get('type'))->paginate(25);
 
         return view('admin.users.index', compact('users'));
     }

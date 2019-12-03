@@ -3,21 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="8180c5ed-673f-49f8-86b4-67ec3aa8cc38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminCategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminCategoriesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminPeticionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminPeticionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PeticionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PeticionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminPostsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminPostsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminResponsableController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminResponsableController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Peticion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Peticion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Responsable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Responsable.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_19_182032_create_peticions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_19_182032_create_peticions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/peticiones/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/peticiones/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/peticiones/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/peticiones/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/emails/mail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/mail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/peticion.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/peticion.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/peticion/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/peticion/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/posts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/posts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/responsable/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/responsable/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -196,9 +197,6 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="showServicesTree" value="false" />
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -220,6 +218,10 @@
       <workItem from="1574443104399" duration="3798000" />
       <workItem from="1574703691641" duration="6967000" />
       <workItem from="1574779363613" duration="15051000" />
+      <workItem from="1574867391780" duration="2650000" />
+      <workItem from="1575039777675" duration="727000" />
+      <workItem from="1575304650053" duration="10092000" />
+      <workItem from="1575391196387" duration="7960000" />
     </task>
     <servers />
   </component>

@@ -57,4 +57,17 @@ class User extends Authenticatable
         }else
             return false;
     }
+
+    public function scopeName($query, $name){
+        if (trim($name) != "")
+            $query->where('name', 'LIKE' ,'%'.$name.'%');
+    }
+
+    public function scopeType($query, $type){
+            $types = [''=>'Seleccione un tipo de usuario', 1=>'Administrador', 2=>'Colaborador', 3=>'General'];
+
+            if ($type != "" && isset($types[$type])){
+                $query->where('role_id', $type);
+            }
+        }
 }

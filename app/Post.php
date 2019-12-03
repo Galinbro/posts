@@ -29,4 +29,23 @@ class Post extends Model
     public function archivo(){
         return $this->belongsTo('App\Archivo');
     }
+
+    public function scopeName($query, $name){
+            if (trim($name) != "")
+                $query->where('title', 'LIKE' ,'%'.$name.'%');
+    }
+
+    public function scopeCategory($query, $type){
+            $types = Category::pluck('name', 'id')->all();
+
+            if ($type != "" && isset($types[$type])){
+                $query->where('category_id', $type);
+            }
+    }
+
+    public function scopeEmisor($query, $type){
+        if ($type != ""){
+            $query->where('user_id', $type);
+        }
+    }
 }

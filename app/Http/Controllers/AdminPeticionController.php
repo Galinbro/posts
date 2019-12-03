@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Peticion;
+use App\User;
 use App\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,11 +17,20 @@ class AdminPeticionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $peticiones = Peticion::paginate(25);
 
-        return view('admin.peticiones.index', compact('peticiones'));
+        $peticiones = Peticion::cr($request->get('cr'))->responsable($request->get('resposable'))->emisor($request->get('emisor'))->cliente($request->get('cliente'))->status($request->all('pendientes', 'proceso', 'finalizadas', 'correcciones'))->paginate(25);
+
+        $cr = Peticion::pluck('ug', 'ug')->all();
+
+        $responsables = Responsable::pluck('name', 'id')->all();
+
+        $emisor = Peticion::with('user')->get()->pluck('user.name', 'user_id')->all();
+
+        $cliente = Peticion::pluck('nb_cliente', 'nb_cliente')->all();
+
+        return view('admin.peticiones.index', compact('peticiones', 'cr', 'responsables', 'emisor', 'cliente'));
     }
 
     /**

@@ -13,9 +13,9 @@ class AdminResponsableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $responsables = Responsable::paginate(10);
+        $responsables = Responsable::name($request->get('name'))->paginate(10);
 
         return view('admin.responsable.index', compact('responsables'));
     }

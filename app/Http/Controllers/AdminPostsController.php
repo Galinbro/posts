@@ -18,11 +18,15 @@ class AdminPostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::paginate(15);
+        $posts = Post::name($request->get('title'))->category($request->get('category'))->emisor($request->get('emisor'))->paginate(10);
+
+
+        $emisor = Post::with('user')->get()->pluck('user.name', 'user_id')->all();
+
         $categories = Category::pluck('name', 'id')->all();
-        return view('admin.posts.index', compact('posts', 'categories'));
+        return view('admin.posts.index', compact('posts', 'categories', 'emisor'));
     }
 
     /**

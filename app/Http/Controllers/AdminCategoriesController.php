@@ -13,11 +13,10 @@ class AdminCategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-
-        $categories = Category::paginate(15);
+        $categories = Category::name($request->get('name'))->category($request->get('category'))->paginate(15);
 
         return view('admin.categories.index', compact('categories'));
     }

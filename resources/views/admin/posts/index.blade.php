@@ -22,16 +22,26 @@
 
     <div class="row">
         <div class="col-sm-4">
-            <h1>Posts</h1>
+            <h1>Usuarios</h1>
         </div>
-        <div class="col-sm-4">
-            <input class="form-control" id="filtro" type="text" placeholder="Filtrar.." style="margin-top: 25px;">
-        </div>
-        <div class="col-sm-4">
-
+        <div class="col-sm-8">
+            {!! Form::open(['route' =>'posts.index', 'method'=> 'GET', 'class'=>'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
+            <div class="row">
+                <div class="form-group">
+                    {!! Form::text('title', null, ['class'=>'form-control', 'placeholder'=>'Titulo de post']) !!}
+                    {!! Form::select('category',[''=>'Seleccione una categoria'] + $categories, null, ['class'=>'form-control']) !!}
+                    {!! Form::select('emisor',[''=>'Seleccione un usuario'] + $emisor, null, ['class'=>'form-control']) !!}
+                </div>
+            </div>
+            <div class="row pull-right">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Buscar</button>
+                </div>
+                <i class="fa fa-filter" aria-hidden="true" id="filter"></i>
+                {!! Form::close() !!}
+            </div>
         </div>
     </div>
-
 
 
 
@@ -75,14 +85,16 @@
 @endsection
 
 @section('scripts')
-    <script>
-        $(document).ready(function(){
-            $("#filtro").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#posts tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (window.location.href.indexOf("?") > -1) {
+                $('#filter').attr('class', 'fa fa-filter');
+                $("#filter").click(function () {
+                    window.location.href = "{{URL::to('admin/posts')}}"
                 });
-            });
+            }else{
+                $('#filter').attr('class', '');
+            }
         });
     </script>
 @endsection
