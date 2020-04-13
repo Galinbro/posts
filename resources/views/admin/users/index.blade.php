@@ -91,6 +91,9 @@
                 $("#filter").click(function () {
                     window.location.href = "{{URL::to('admin/users')}}"
                 });
+
+                $("div.form-group select").val('{{$selected}}');
+
             }else{
                 $('#filter').attr('class', '');
             }

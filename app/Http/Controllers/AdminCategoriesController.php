@@ -18,7 +18,12 @@ class AdminCategoriesController extends Controller
 
         $categories = Category::name($request->get('name'))->category($request->get('category'))->paginate(15);
 
-        return view('admin.categories.index', compact('categories'));
+        if (trim($request->get('category')) != "")
+            $selected = ($request->get('category'));
+        else
+            $selected = '';
+
+        return view('admin.categories.index', compact('categories', 'selected'));
     }
 
     /**

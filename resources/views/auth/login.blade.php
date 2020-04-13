@@ -62,13 +62,22 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a href="{{ url('/auth/redirect/google') }}" class="btn"><img width="30px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"></img></a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <a href="{{ url('/auth/redirect/google') }}" class="btn align-items-center text-left" style="border-style: solid; border-color: #d4d9d6;">
+                                    <img width="30px"
+                                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+                                    <span style="margin-left: .4em;">Google</span>
+                                </a>
                             </div>
                         </div>
                     </form>

@@ -11,13 +11,12 @@
 |
 */
 
+
 Route::get('/', function (){
     return view('welcome');
 });
 
 Route::get('/home', 'HomeController@index');
-
-//Route::get('/emails',['as'=>'emails.mail','uses'=>'TestMail@index']);
 
 Auth::routes();
 
@@ -25,8 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
 Route::get('/callback/{provider}', 'SocialController@callback');
-
-//Route::get('/post/{id}', ['as'=>'home.post','uses'=>'AdminPostsController@post']);
 
 Route::resource('/peticion','PeticionController');
 

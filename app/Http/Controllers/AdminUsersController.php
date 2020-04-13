@@ -24,7 +24,12 @@ class AdminUsersController extends Controller
 
         $users = User::name($request->get('name'))->type($request->get('type'))->paginate(25);
 
-        return view('admin.users.index', compact('users'));
+        if (trim($request->get('type')) != "")
+            $selected = ($request->get('type'));
+        else
+            $selected = '';
+
+        return view('admin.users.index', compact('users', 'selected'));
     }
 
     /**

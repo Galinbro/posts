@@ -111,8 +111,6 @@ class AdminPeticionController extends Controller
         $peticion->status = (integer)$input['status'];
         $peticion->comentario = $input['comentario'];
 
-        //return $peticion;
-
         $peticion->save();
 
         Session::flash('update_peticion', 'La peticion fue actualizada');

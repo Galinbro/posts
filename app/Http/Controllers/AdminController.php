@@ -2,22 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Peticion;
-use App\Post;
+use App\Responsable;
 use Illuminate\Http\Request;
-
 class AdminController extends Controller
 {
 
 
 
-    public function index(){
+    public function index(Request $request){
 
-        $pendientes = Peticion::where('status','=',0)->count();
-        $proceso = Peticion::where('status','=',1)->count();
-        $finalizadas = Peticion::where('status','=',2)->count();
+        $responsables = Responsable::pluck('name', 'id')->all();
+        $pendientes = Peticion::emisor($request->get('status'))->responsable($request->get('responsable'))->where('status','=',0)->count();
+        $proceso = Peticion::emisor($request->get('status'))->responsable($request->get('responsable'))->where('status','=',1)->count();
+        $finalizadas = Peticion::emisor($request->get('status'))->responsable($request->get('responsable'))->where('status','=',2)->count();
+        $correcciones = Peticion::emisor($request->get('status'))->responsable($request->get('responsable'))->where('status','=',3)->count();
 
-        return view('admin/index', compact('pendientes', 'proceso', 'finalizadas'));
+        if (trim($request->get('responsable')) != "")
+            $responsable = Responsable::findorFail($request->get('responsable'))->id;
+        else
+            $responsable = '';
+
+        return view('admin/index', compact('pendientes', 'proceso', 'finalizadas', 'responsables', 'responsable', 'correcciones'));
     }
 }

@@ -26,7 +26,18 @@ class AdminPostsController extends Controller
         $emisor = Post::with('user')->get()->pluck('user.name', 'user_id')->all();
 
         $categories = Category::pluck('name', 'id')->all();
-        return view('admin.posts.index', compact('posts', 'categories', 'emisor'));
+
+        if (trim($request->get('category')) != "")
+            $selected1 = ($request->get('category'));
+        else
+            $selected1 = '';
+
+        if (trim($request->get('emisor')) != "")
+            $selected2 = ($request->get('emisor'));
+        else
+            $selected2 = '';
+
+        return view('admin.posts.index', compact('posts', 'categories', 'emisor', 'selected1', 'selected2'));
     }
 
     /**

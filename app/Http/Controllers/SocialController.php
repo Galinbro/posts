@@ -16,7 +16,16 @@ class SocialController extends Controller
     public function callback($provider)
     {
 
-        $getInfo = Socialite::driver($provider)->user();
+        try {
+            $getInfo = Socialite::driver($provider)->user();
+        } catch (\Exception $e) {
+            return redirect('/login');
+        }
+
+        // only allow people with @company.com to login
+        /*if(explode("@", $getInfo->email)[1] !== 'bbva.com'){
+            return redirect()->to('/');
+        }*/
 
         $user = $this->createUser($getInfo,$provider);
 
